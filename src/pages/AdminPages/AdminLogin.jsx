@@ -22,7 +22,7 @@ export default function AdminLogin() {
     loading, 
     error, 
     errorCode, 
-    isAuthenticated, 
+    isAdminAuthenticated, 
     successMessage, 
     captcha, 
     failedAttempts,
@@ -69,10 +69,10 @@ export default function AdminLogin() {
   }, [dispatch, ipBlocked, ipInfo.ip]);
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAdminAuthenticated) {
       navigate("/admin/dashboard");
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAdminAuthenticated, navigate]);
 
   useEffect(() => {
     if (error) {
@@ -103,7 +103,7 @@ export default function AdminLogin() {
     if (successMessage) {
       toast.success(successMessage, {
         autoClose: 3000,  
-        onClose: () => navigate("/anjo/dashboard")
+        onClose: () => navigate("/admin/dashboard")
       });
     }
   }, [successMessage, navigate]);

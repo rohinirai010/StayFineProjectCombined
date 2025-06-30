@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import ProtectedRoute from "../src/routes/ProtectedRoute";
 
 import "./css/style.css";
 
@@ -37,6 +36,8 @@ import DirectIncentiveBonus from "./pages/AdminPages/Reports/DirectIncentiveBonu
 import ParallelMiningBonusReport from "./pages/AdminPages/Reports/ParallelMiningBonusReport";
 import OdlSetting from "./pages/AdminPages/Settings/OdlSetting";
 import LevelSetting from "./pages/AdminPages/Settings/LevelSetting";
+import AdminProtectedRoute from "./routes/AdminProtectedRoute.jsx";
+import UserProtectedRoute from "./routes/UserProtectedRoute.jsx";
 
 function App() {
   const location = useLocation();
@@ -61,69 +62,104 @@ function App() {
         
 
         {/* ----------------------------------- Admin Panel Routes -------------------------------------- */}
-
         <Route exact path="/admin/login" element={<AdminLogin />} />
+        
         <Route
           path="/admin/dashboard"
           element={
-            <ProtectedRoute>
+            <AdminProtectedRoute>
               <AdminDashboard />
-            </ProtectedRoute>
+            </AdminProtectedRoute>
           }
         />
 
-        <Route exact path="/admin/members-list" element={<MembersList />} />
+        <Route 
+          exact 
+          path="/admin/members-list" 
+          element={
+              <MembersList />
+          } 
+        />
 
         <Route
           exact
           path="/admin/create-subadmin"
-          element={<CreateSubAdmin />}
+          element={
+              <CreateSubAdmin />
+          }
         />
 
-        
-        <Route exact path="/admin/add-qr" element={<AddQRCode />} />
+        <Route 
+          exact 
+          path="/admin/add-qr" 
+          element={
+              <AddQRCode />
+          } 
+        />
         
         <Route
           exact
           path="/admin/deposit-history"
-          element={<DepositHistory />}
+          element={
+              <DepositHistory />
+          }
         />
 
-        
         <Route
           exact
           path="/admin/withdraw-history"
-          element={<WithdrawalHistory />}
+          element={
+              <WithdrawalHistory />
+          }
         />
  
-        <Route exact path="/admin/daily-roi" element={<DailyROIReport />} />
+        <Route 
+          exact 
+          path="/admin/daily-roi" 
+          element={
+              <DailyROIReport />
+          } 
+        />
 
-        
-        <Route exact path="/admin/direct-bonus" element={<DirectIncentiveBonus />} />
-
-        
-
+        <Route 
+          exact 
+          path="/admin/direct-bonus" 
+          element={
+              <DirectIncentiveBonus />
+          } 
+        />
 
         <Route
           exact
           path="/admin/affiliate-program"
-          element={<AffiliateProgramReport />}
+          element={
+              <AffiliateProgramReport />
+          }
         />
 
-       
         <Route
           exact
           path="/admin/parallel-bonus-report"
-          element={<ParallelMiningBonusReport />}
+          element={
+              <ParallelMiningBonusReport />
+          }
         />
-         {/*
-        <Route exact path="/admin/odl-profit" element={<OdlProfit />} />
-        <Route exact path="/admin/royalty-bonus" element={<RoyaltyBonus />} />
-        <Route exact path="/admin/special-reward" element={<SpecialReward />} />*/}
-        <Route exact path="/admin/odl-setting" element={<OdlSetting />} />
-        <Route exact path="/admin/level-setting" element={<LevelSetting />} /> 
 
+        <Route 
+          exact 
+          path="/admin/odl-setting" 
+          element={
+              <OdlSetting />
+          } 
+        />
         
+        <Route 
+          exact 
+          path="/admin/level-setting" 
+          element={
+              <LevelSetting />
+          } 
+        /> 
 
         {/* -------------------------------- User Panel Routes ----------------------------------------- */}
 
@@ -131,9 +167,9 @@ function App() {
           exact
           path="/user/dashboard"
           element={
-            <ProtectedRoute>
+            <UserProtectedRoute>
               <Dashboard />
-            </ProtectedRoute>
+            </UserProtectedRoute>
           }
         />
 
@@ -141,10 +177,38 @@ function App() {
         <Route exact path="/password-recover" element={<PasswordRecovery />} />
         <Route exact path="/user/register" element={<Register />} />
         <Route exact path="/user/welcome" element={<Welcome />} />
-        <Route exact path="/user/networks" element={<NetworksPage />} />
-        <Route exact path="/user/e-wallet" element={<EWalletPage />} />
-        <Route exact path="/user/plan" element={<PromoterPlanPage />} />
-        <Route exact path="/user/withdrawal" element={<PayoutPage />} />
+        
+        <Route 
+          exact 
+          path="/user/networks" 
+          element={
+              <NetworksPage />
+          } 
+        />
+        
+        <Route 
+          exact 
+          path="/user/e-wallet" 
+          element={
+              <EWalletPage />
+          } 
+        />
+        
+        <Route 
+          exact 
+          path="/user/plan" 
+          element={
+              <PromoterPlanPage />
+          } 
+        />
+        
+        <Route 
+          exact 
+          path="/user/withdrawal" 
+          element={
+              <PayoutPage />
+          } 
+        />
       </Routes>
     </>
   );

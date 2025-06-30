@@ -193,7 +193,7 @@ const getInitialState = () => {
     return {
       admin: adminInfo,
       token: adminToken,
-      isAuthenticated: !!adminToken,
+      isAdminAuthenticated: !!adminToken,
       loading: false,
       error: null,
       errorCode: null,
@@ -210,7 +210,7 @@ const getInitialState = () => {
     return {
       admin: null,
       token: null,
-      isAuthenticated: false,
+      isAdminAuthenticated: false,
       loading: false,
       error: null,
       errorCode: null,
@@ -237,7 +237,7 @@ const authSlice = createSlice({
     },
     // Added a forceLogout action to handle edge cases
     forceLogout: (state) => {
-      state.isAuthenticated = false;
+      state.isAdminAuthenticated = false;
       state.admin = null;
       state.token = null;
       localStorage.removeItem("adminToken");
@@ -259,7 +259,7 @@ const authSlice = createSlice({
       })
       .addCase(loginAdmin.fulfilled, (state, action) => {
         state.loading = false;
-        state.isAuthenticated = true;
+        state.isAdminAuthenticated = true;
         state.admin = action.payload.admin;
         state.token = action.payload.token;
         state.successMessage = "Login successful!";
@@ -276,7 +276,7 @@ const authSlice = createSlice({
       })
       .addCase(loginAdmin.rejected, (state, action) => {
         state.loading = false;
-        state.isAuthenticated = false;
+        state.isAdminAuthenticated = false;
         state.admin = null;
         state.token = null;
         state.error = action.payload?.error || "Invalid credentials";
@@ -306,7 +306,7 @@ const authSlice = createSlice({
       })
       .addCase(logoutAdmin.fulfilled, (state) => {
         state.loading = false;
-        state.isAuthenticated = false;
+        state.isAdminAuthenticated = false;
         state.admin = null;
         state.token = null;
         // Clearing any messages that might cause confusion
@@ -317,7 +317,7 @@ const authSlice = createSlice({
       .addCase(logoutAdmin.rejected, (state) => {
         // Even on error, make sure we clear auth state
         state.loading = false;
-        state.isAuthenticated = false;
+        state.isAdminAuthenticated = false;
         state.admin = null;
         state.token = null;
       })

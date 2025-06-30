@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadUser } from '../ReduxStateManagement/user/slices/authSlice';
 
-const PrivateRoute = ({ children }) => {
+const UserProtectedRoute = ({ children }) => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(state => !!state.auth.token);
   const [loading, setLoading] = useState(true);
@@ -13,7 +13,7 @@ const PrivateRoute = ({ children }) => {
       try {
         await dispatch(loadUser()).unwrap();
       } catch (error) {
-        console.log("Authentication check failed");
+        console.log("User authentication check failed");
       } finally {
         setLoading(false);
       }
@@ -30,4 +30,4 @@ const PrivateRoute = ({ children }) => {
   return isAuthenticated ? children : <Navigate to="/user/login" />;
 };
 
-export default PrivateRoute;
+export default UserProtectedRoute;
