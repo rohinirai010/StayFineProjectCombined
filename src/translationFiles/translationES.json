@@ -1,0 +1,42 @@
+{
+    "navigation": {
+      "toHome": "A la página principal"
+    },
+    "auth": {
+      "signIn": "Iniciar Sesión",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "enterCaptcha": "Introduce el CAPTCHA",
+      "rememberMe": "Recordarme",
+      "passwordRecovery": "Recuperar contraseña",
+      "signingIn": "Iniciando sesión...",
+      "signInButton": "INICIAR SESIÓN",
+      "orLoginWith": "O inicia sesión con"
+    },
+    "errors": {
+      "emailRequired": "El correo electrónico es obligatorio",
+      "emailInvalid": "El correo electrónico no es válido",
+      "passwordRequired": "La contraseña es obligatoria",
+      "passwordLength": "La contraseña debe tener al menos 6 caracteres",
+      "captchaRequired": "El CAPTCHA es obligatorio",
+      "captchaMatch": "El CAPTCHA no coincide"
+    },
+    "footer": {
+      "contacts": "Contactos",
+      "amlPolicy": "Política AML y KYC",
+      "paymentPolicy": "Política de pagos",
+      "termsConditions": "Términos y condiciones",
+      "privacyPolicy": "Política de privacidad",
+      "infoDisclosure": "Divulgación de información",
+      "copyright": "Copyright ©{{year}} PO TRADE"
+    },
+    "recovery": {
+      "title": "Recuperación de contraseña",
+      "description": "Introduce tu dirección de correo electrónico registrada y te enviaremos un correo con instrucciones para restablecer la contraseña de tu cuenta PO TRADE.",
+      "emailSent": "Las instrucciones de recuperación de contraseña han sido enviadas a {{email}}. Por favor, revisa tu bandeja de entrada.",
+      "sendingInstructions": "Enviando instrucciones...",
+      "restoreButton": "RESTAURAR",
+      "backToLogin": "Volver a Iniciar Sesión",
+      "recaptcha": "No soy un robot"
+    }
+  }

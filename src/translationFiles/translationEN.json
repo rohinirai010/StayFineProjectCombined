@@ -1,0 +1,42 @@
+{
+    "navigation": {
+      "toHome": "To home page"
+    },
+    "auth": {
+      "signIn": "Sign In",
+      "email": "Email",
+      "password": "Password",
+      "enterCaptcha": "Enter CAPTCHA",
+      "rememberMe": "Remember me",
+      "passwordRecovery": "Password recovery",
+      "signingIn": "Signing in...",
+      "signInButton": "SIGN IN",
+      "orLoginWith": "Or login with"
+    },
+    "errors": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Email is invalid",
+      "passwordRequired": "Password is required",
+      "passwordLength": "Password must be at least 6 characters",
+      "captchaRequired": "CAPTCHA is required",
+      "captchaMatch": "CAPTCHA does not match"
+    },
+    "footer": {
+      "contacts": "Contacts",
+      "amlPolicy": "AML and KYC policy",
+      "paymentPolicy": "Payment policy",
+      "termsConditions": "Terms and Conditions",
+      "privacyPolicy": "Privacy policy",
+      "infoDisclosure": "Information disclosure",
+      "copyright": "Copyright ©{{year}} PO TRADE"
+    },
+    "recovery": {
+      "title": "Password recovery",
+      "description": "Enter your registered email address and we will send you an email with instructions on how to reset your PO TRADE account password.",
+      "emailSent": "Password recovery instructions have been sent to {{email}}. Please check your inbox.",
+      "sendingInstructions": "Sending instructions...",
+      "restoreButton": "RESTORE",
+      "backToLogin": "Back to Log In",
+      "recaptcha": "I'm not a robot"
+    }
+  }

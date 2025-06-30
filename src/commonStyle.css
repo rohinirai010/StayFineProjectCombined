@@ -1,0 +1,42 @@
+/* main website custom styles */
+:root {
+  /* Standard Colors  */
+  --color-primary: #E20C88; 
+  --color-dark: #571043; 
+  --color-white: #ffffff; 
+  --color-accent: #FFAEDD; 
+
+  /* --color-primary: #0328EE;   
+  --color-white: #FFFFFF;     
+  --color-dark: #010725;      
+  --color-accent: #010D50;   
+   */
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-white);
+    /* color: var(--color-white); */
+  /* font-family: "DM Sans", sans-serif; */
+}
+
+.react-tel-input .flag-dropdown {
+  border-radius: 1rem 0 0 1rem !important;
+  border-right: 1px solid #d1d5db !important;
+}
+
+.react-tel-input .selected-flag {
+  border-radius: 1rem 0 0 1rem !important;
+}
+
+.react-tel-input .form-control {
+  width: 100% !important;
+  height: auto !important;
+  padding-left: 48px !important;
+}
+
+@media screen and (max-width: 740px) {
+  .smallPosition {
+    transform-origin: top left;
+  }
+}

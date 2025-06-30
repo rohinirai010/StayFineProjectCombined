@@ -1,0 +1,42 @@
+{
+    "navigation": {
+      "toHome": "Vers la page d'accueil"
+    },
+    "auth": {
+      "signIn": "Se connecter",
+      "email": "Email",
+      "password": "Mot de passe",
+      "enterCaptcha": "Entrez le CAPTCHA",
+      "rememberMe": "Se souvenir de moi",
+      "passwordRecovery": "Récupération de mot de passe",
+      "signingIn": "Connexion en cours...",
+      "signInButton": "SE CONNECTER",
+      "orLoginWith": "Ou connectez-vous avec"
+    },
+    "errors": {
+      "emailRequired": "L'email est requis",
+      "emailInvalid": "L'email est invalide",
+      "passwordRequired": "Le mot de passe est requis",
+      "passwordLength": "Le mot de passe doit contenir au moins 6 caractères",
+      "captchaRequired": "Le CAPTCHA est requis",
+      "captchaMatch": "Le CAPTCHA ne correspond pas"
+    },
+    "footer": {
+      "contacts": "Contacts",
+      "amlPolicy": "Politique LBC et KYC",
+      "paymentPolicy": "Politique de paiement",
+      "termsConditions": "Conditions générales",
+      "privacyPolicy": "Politique de confidentialité",
+      "infoDisclosure": "Divulgation d'informations",
+      "copyright": "Copyright ©{{year}} PO TRADE"
+    },
+    "recovery": {
+        "title": "Récupération de mot de passe",
+        "description": "Entrez votre adresse e-mail enregistrée et nous vous enverrons un e-mail avec des instructions pour réinitialiser le mot de passe de votre compte PO TRADE.",
+        "emailSent": "Les instructions de récupération de mot de passe ont été envoyées à {{email}}. Veuillez vérifier votre boîte de réception.",
+        "sendingInstructions": "Envoi des instructions...",
+        "restoreButton": "RESTAURER",
+        "backToLogin": "Retour à la connexion",
+        "recaptcha": "Je ne suis pas un robot"
+      }
+  }
