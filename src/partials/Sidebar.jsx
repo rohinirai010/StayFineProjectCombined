@@ -5,8 +5,6 @@ import {
   Wallet,
   Zap,
   ShoppingCart,
-  Settings,
-  Mail,
   ChevronDown,
   Network,
   ChevronsRight,
@@ -15,6 +13,8 @@ import {
 } from "lucide-react";
 import sidebarLogo from "../images/AuthLogo.png";
 import { Link } from "react-router-dom";
+import { BiSupport } from "react-icons/bi";
+import { MdAccountCircle } from "react-icons/md";
 
 const Sidebar = ({ isExpanded, setIsExpanded, activeItem, setActiveItem }) => {
   const [dropdownStates, setDropdownStates] = useState({
@@ -23,11 +23,16 @@ const Sidebar = ({ isExpanded, setIsExpanded, activeItem, setActiveItem }) => {
   });
 
   const menuItems = [
-    { icon: Home, label: "Dashboard", id: "dashboard", link: "/user/dashboard" },
-    { 
-      icon: Network, 
-      label: "Networks", 
-      id: "networks", 
+    {
+      icon: Home,
+      label: "Dashboard",
+      id: "dashboard",
+      link: "/user/dashboard",
+    },
+    {
+      icon: Network,
+      label: "Networks",
+      id: "networks",
       // hasDropdown: true,
       link: "/user/networks",
       // dropdownItems: [
@@ -35,23 +40,43 @@ const Sidebar = ({ isExpanded, setIsExpanded, activeItem, setActiveItem }) => {
       //   { label: "Team Network", link: "/networks/team-network" }
       // ]
     },
-    { icon: UserPlus, label: "Register", id: "register", link: "/user/register" },
-    { icon: Wallet, label: "E-Wallet", id: "ewallet", link: "/user/e-wallet" },
-    { icon: IndianRupeeIcon, label: "Withdrawal", id: "payout", link: "/user/withdrawal" },
-    { icon: Zap, label: "Promoter Plan", id: "ewallet", link: "/user/e-wallet" },
-    { icon: ShoppingCart, label: "Shopping", id: "shopping", link: "/shopping" },
-    { 
-      icon: Settings, 
-      label: "Tools", 
-      id: "tools", 
-      hasDropdown: true,
-      link: "/tools",
-      dropdownItems: [
-        { label: "Settings", link: "/tools/settings" },
-        { label: "Analytics", link: "/tools/analytics" }
-      ]
+    {
+      icon: UserPlus,
+      label: "Register",
+      id: "register",
+      link: "/user/register",
     },
-    { icon: Mail, label: "Mail Box", id: "mailbox", link: "/mailbox" },
+    { icon: Wallet, label: "E-Wallet", id: "ewallet", link: "/user/e-wallet" },
+    {
+      icon: IndianRupeeIcon,
+      label: "Withdrawal",
+      id: "payout",
+      link: "/user/withdrawal",
+    },
+    {
+      icon: Zap,
+      label: "Promoter Plan",
+      id: "plan",
+      link: "/user/e-wallet",
+    },
+    // { icon: ShoppingCart, label: "Shopping", id: "shopping", link: "/shopping" },
+    {
+      icon: MdAccountCircle,
+      label: "My Account",
+      id: "account",
+      // hasDropdown: true,
+      link: "/user/account",
+      // dropdownItems: [
+      //   { label: "Settings", link: "/tools/settings" },
+      //   { label: "Analytics", link: "/tools/analytics" },
+      // ],
+    },
+    {
+      icon: BiSupport,
+      label: "Customer Care",
+      id: "support",
+      link: "/user/support",
+    },
   ];
 
   const toggleDropdown = (itemLabel) => {
@@ -63,12 +88,10 @@ const Sidebar = ({ isExpanded, setIsExpanded, activeItem, setActiveItem }) => {
 
   console.log("Current activeItem:", activeItem);
 
-
-
   const handleItemClick = (item, e) => {
     e.preventDefault();
     setActiveItem(item.id);
-    
+
     if (item.hasDropdown) {
       // For dropdown items, toggle dropdown AND navigate to main link
       toggleDropdown(item.label);
@@ -128,7 +151,7 @@ const Sidebar = ({ isExpanded, setIsExpanded, activeItem, setActiveItem }) => {
               >
                 <IconComponent className="w-6 h-6" />
               </a>
-              
+
               {/* Tooltip */}
               <div className="absolute left-full ml-2 top-1/2 transform -translate-y-1/2 bg-blue-400/60 text-[#000] text-[11px] px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 whitespace-nowrap z-30">
                 {item.label}
@@ -189,9 +212,9 @@ const Sidebar = ({ isExpanded, setIsExpanded, activeItem, setActiveItem }) => {
         >
           {/* Logo Header */}
           <div className="flex items-center justify-between px-4 pt-5 pb-3 border-b">
-          <Link to="/user/dashboard">
-                <img src={sidebarLogo} alt="Logo" className="w-20 h-10" />
-              </Link>
+            <Link to="/user/dashboard">
+              <img src={sidebarLogo} alt="Logo" className="w-20 h-10" />
+            </Link>
             <button
               onClick={() => setIsExpanded(false)}
               className="p-1 rounded-tl-xl rounded-br-xl text-gray-200 bg-gradient-to-br from-[#836fe8] hover:from-[#ac45cc] via-[#4228c5] to-[#ac45cc] hover:to-[#836fe8] hover:scale-105 flex items-center justify-center cursor-pointer"
@@ -214,7 +237,7 @@ const Sidebar = ({ isExpanded, setIsExpanded, activeItem, setActiveItem }) => {
                     }`}
                   >
                     {/* Main clickable area */}
-                    <div 
+                    <div
                       className="flex items-center space-x-3 flex-1"
                       onClick={(e) => handleMainItemClick(item, e)}
                     >
@@ -225,7 +248,7 @@ const Sidebar = ({ isExpanded, setIsExpanded, activeItem, setActiveItem }) => {
                         {item.label}
                       </span>
                     </div>
-                    
+
                     {/* Dropdown toggle button */}
                     {item.hasDropdown && (
                       <button
@@ -245,16 +268,20 @@ const Sidebar = ({ isExpanded, setIsExpanded, activeItem, setActiveItem }) => {
                   {/* Dropdown Content */}
                   {item.hasDropdown && dropdownStates[item.label] && (
                     <div className="ml-6 mt-1 space-y-[2px]">
-                      {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
-                        <a
-                          key={dropdownIndex}
-                          href={dropdownItem.link}
-                          onClick={(e) => handleDropdownItemClick(dropdownItem, e)}
-                          className="block w-full text-left px-3 py-2 text-[12px] font-medium text-gray-600 hover:bg-gray-50 rounded-lg"
-                        >
-                          {dropdownItem.label}
-                        </a>
-                      ))}
+                      {item.dropdownItems?.map(
+                        (dropdownItem, dropdownIndex) => (
+                          <a
+                            key={dropdownIndex}
+                            href={dropdownItem.link}
+                            onClick={(e) =>
+                              handleDropdownItemClick(dropdownItem, e)
+                            }
+                            className="block w-full text-left px-3 py-2 text-[12px] font-medium text-gray-600 hover:bg-gray-50 rounded-lg"
+                          >
+                            {dropdownItem.label}
+                          </a>
+                        )
+                      )}
                     </div>
                   )}
                 </div>

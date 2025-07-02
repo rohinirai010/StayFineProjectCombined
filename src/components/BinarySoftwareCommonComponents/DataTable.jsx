@@ -291,7 +291,7 @@ export const DataTable = ({
               </button>
 
               {showExportMenu && (
-                <div className="absolute right-0 top-11 bg-white rounded-lg shadow-xl border border-gray-200 z-50 min-w-[140px] sm:min-w-[160px]">
+                <div className="absolute right-0 top-9 sm:top-11 bg-white rounded-lg shadow-xl border border-gray-200 z-50 min-w-[120px] sm:min-w-[160px]">
                   <div className="p-1.5 text-[12px] sm:text-sm">
                     <button
                       onClick={() => exportData("pdf")}
@@ -414,15 +414,15 @@ export const DataTable = ({
       </div>
 
       {/* Footer with Pagination */}
-      <div className="px-3 py-3 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-50">
-        <div className="flex items-center gap-4">
+      <div className="px-3 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 bg-gray-50">
+        <div className="flex items-center gap-5 sm:gap-4">
           <select
             value={itemsPerPage}
             onChange={(e) => {
               setItemsPerPage(Number(e.target.value));
               setCurrentPage(1);
             }}
-            className="border border-gray-300 rounded-lg px-2 sm:px-3 py-0.5 sm:py-1 text-[12px] sm:text-[13px] focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="border border-gray-300 rounded-lg px-2 sm:px-3 py-0.5 sm:py-1 text-[11px] sm:text-[13px] focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
             {[5, 10, 20, 50, 100].map((num) => (
               <option key={num} value={num}>

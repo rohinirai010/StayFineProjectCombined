@@ -19,11 +19,11 @@ const pathToLabelMap = {
   "/user/e-wallet": "E-Wallet",
   "/user/withdrawal": "Withdrawal",
   "/user/e-pin": "E-pin",
-  "/shopping": "Shopping",
-  "/tools": "Tools",
+  // "/shopping": "Shopping",
+  "/user/account": "My Account",
   "/tools/settings": "Settings",
   "/tools/analytics": "Analytics",
-  "/mailbox": "Mail Box",
+  "/user/support": "Customer Care",
 };
 
 const currentPath = location.pathname;

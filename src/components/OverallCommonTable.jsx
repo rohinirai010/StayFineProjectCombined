@@ -15,11 +15,11 @@ const ExportDropdown = ({ onExport }) => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-indigo-50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-800/50 rounded-lg transition-colors cursor-pointer border border-indigo-200 dark:border-indigo-800"
+        className="flex items-center gap-2 px-2 sm:px-4 py-1.5 sm:py-2 text-[12px] sm:text-sm font-medium bg-indigo-50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-300 dark:hover:bg-indigo-800/50 rounded-lg transition-colors cursor-pointer border border-indigo-200 dark:border-indigo-800"
       >
-        <Download className="w-4 h-4" />
+        <Download className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
         Export Data
-        <ChevronDown className="w-4 h-4" />
+        <ChevronDown className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
       </button>
 
       {isOpen && (
@@ -93,7 +93,7 @@ const CommonTable = ({
 
   return (
     <div className="w-full">
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end mb-2 sm:mb-4">
         <ExportDropdown onExport={onExport} />
       </div>
       
@@ -115,7 +115,7 @@ const CommonTable = ({
                   <th
                     key={column.key}
                     onClick={() => column.sortable !== false && onSort(column.key)}
-                    className={`px-6 py-3.5 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider ${
+                    className={`px-4 sm:px-6 py-2.5 sm:py-3.5 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider ${
                       column.sortable !== false ? 'cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700' : ''
                     }`}
                   >
@@ -147,7 +147,7 @@ const CommonTable = ({
                   {columns.map((column) => (
                     <td
                       key={`${row.id}-${column.key}`}
-                      className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+                      className="px-4 sm:px-6 py-2.5 sm:py-4 whitespace-nowrap text-[12px] sm:text-sm text-gray-800 dark:text-gray-200"
                     >
                       {column.render ? column.render(row) : row[column.key]}
                     </td>
