@@ -5,8 +5,6 @@ import { useDispatch } from "react-redux";
 
 import "./css/style.css";
 
-import "./i18n";
-
 //main website imports
 import Home from "./pages/MainWebsitePages/Home";
 
