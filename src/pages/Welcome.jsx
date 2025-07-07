@@ -50,7 +50,8 @@ const ProfileData = ({ user, isMobile = false }) => {
   const profileData = useMemo(() => {
     return {
       "Full Name": user?.fullName || user?.username || "N/A",
-      Username: user?.username || "N/A",
+      UserId: user?.username || "N/A",
+      Password: user?.password || "N/A",
       Email: user?.email || "N/A",
       Mobile: user?.mobile || "N/A",
     };
@@ -76,7 +77,7 @@ const ProfileData = ({ user, isMobile = false }) => {
           <motion.div
             key={label}
             className={`flex justify-between items-center ${
-              isMobile ? "py-2 px-3" : "py-3 px-4"
+              isMobile ? "py-2 px-3" : "py-2 px-4"
             } bg-white/5 rounded-lg hover:bg-white/10 transition-colors relative overflow-hidden`}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -138,7 +139,7 @@ const FeatureCard = ({
 }) => (
   <motion.div
     className={`bg-white/80 backdrop-blur-sm rounded-xl ${
-      isMobile ? "p-2" : "p-4"
+      isMobile ? "p-1.5" : "p-4"
     } shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1`}
     initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
@@ -146,19 +147,19 @@ const FeatureCard = ({
   >
     <div
       className={`${
-        isMobile ? "w-6 h-6 " : "w-10 h-10"
-      } bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-2`}
+        isMobile ? "w-5 h-5 " : "w-9 h-9"
+      } bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-1`}
     >
-      <Icon className={`${isMobile ? "w-4 h-4" : "w-5 h-5"} text-white`} />
+      <Icon className={`${isMobile ? "w-3.5 h-3.5" : "w-5 h-5"} text-white`} />
     </div>
     <h3
       className={`${
-        isMobile ? "text-[12px]" : "text-[17px]"
+        isMobile ? "text-[12px]" : "text-[15.5px]"
       } font-semibold text-gray-800 mb-1`}
     >
       {title}
     </h3>
-    <p className={`text-gray-600 ${isMobile ? "text-[11px]" : "text-[13px]"}`}>
+    <p className={`text-gray-600 ${isMobile ? "text-[11px]" : "text-[12.5px]"}`}>
       {description}
     </p>
   </motion.div>
@@ -358,7 +359,7 @@ const SwipeToDashboard = ({ onSwipeComplete, isEnabled, isMobile = false }) => {
 };
 
 // Main Welcome Page Component
-export default function WelcomePage() {
+const WelcomePage =() => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user, isAuthenticated, isLoading } = useSelector(
@@ -461,18 +462,20 @@ export default function WelcomePage() {
 
           {/* Welcome Message */}
           <motion.div
-            className="text-center mb-4"
+            className="text-center mb-2 sm:mb-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.5 }}
           >
-            <h2 className="text-[22px] font-bold text-gray-800 leading-tight mb-2">
-              Welcome to Your
-              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent block">
-                Success Journey
+            <h2 className="text-[17px] font-semibold text-gray-800 leading-tight mb-3 sm:mb-2">
+            Welcome to 
+              <span className="text-[21px] bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold block">
+              Stay Fine Supermart 
+              
               </span>
+              Retails Chain Promoters & Partners Program
             </h2>
-            <p className="text-[12px] text-gray-600">
+            <p className="text-[11.5px] sm:text-[12px] text-gray-600">
               Your dashboard awaits with powerful tools and insights
             </p>
           </motion.div>
@@ -482,7 +485,7 @@ export default function WelcomePage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="px-3 py-2 bg-green-50 border border-green-200 rounded-xl mb-4"
+            className="px-3 py-1.5 sm:py-2 bg-green-50 border border-green-200 rounded-xl mb-4"
           >
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
@@ -501,13 +504,13 @@ export default function WelcomePage() {
 
           {/* Profile Card - Top Section */}
           <motion.div
-            className="bg-white/90 backdrop-blur-sm rounded-2xl p-2 shadow-lg mb-4"
+            className="bg-white/90 backdrop-blur-sm rounded-2xl p-1.5 shadow-lg mb-4"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <div className="text-center mb-2">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-2 flex items-center justify-center">
+              <div className="w-9 h-9 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-1 flex items-center justify-center">
                 <span className="text-white font-bold text-sm">
                   {userName
                     ?.split(" ")
@@ -515,7 +518,7 @@ export default function WelcomePage() {
                     .join("") || "U"}
                 </span>
               </div>
-              <h3 className="text-[17px] font-bold text-gray-800">
+              <h3 className="text-[16px] font-bold text-gray-800">
                 Account Details
               </h3>
             </div>
@@ -530,22 +533,22 @@ export default function WelcomePage() {
           <div className="grid grid-cols-3 gap-2 mb-4">
             <FeatureCard
               icon={Shield}
-              title="Secure"
-              description="Protected data"
+              title="Product Quality"
+              description=""
               delay={0.6}
               isMobile={true}
             />
             <FeatureCard
               icon={Zap}
-              title="Fast"
-              description="Quick access"
+              title="Customer Support"
+              description=""
               delay={0.7}
               isMobile={true}
             />
             <FeatureCard
               icon={Star}
-              title="Premium"
-              description="Full features"
+              title="Speed Service"
+              description=""
               delay={0.8}
               isMobile={true}
             />
@@ -571,9 +574,9 @@ export default function WelcomePage() {
           >
             <p className="text-gray-500 text-xs">
               Need help?{" "}
-              <span className="text-blue-500">support@proplatform.com</span>
+              <span className="text-blue-500">support@stayfine.com</span>
             </p>
-            <p className="text-gray-400 text-xs mt-1">© 2025 ProPlatform</p>
+            <p className="text-gray-400 text-xs mt-1">© 2025 Stay Fine</p>
           </motion.div>
         </div>
       </div>
@@ -597,23 +600,23 @@ export default function WelcomePage() {
       {/* Main Content */}
       <div className="relative z-10 min-h-screen flex flex-col">
         {/* Header */}
-        <header className="w-full py-6 px-6">
+        <header className="w-full py-6 px-8">
           <motion.div
-            className="max-w-7xl mx-auto flex items-center justify-between"
+            className="max-w-8xl mx-auto flex items-center justify-between"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-3">
-              <img src={AuthLogo} alt="Logo" className="w-36 h-18" />
+              <img src={AuthLogo} alt="Logo" className="w-32 h-16" />
             </div>
             <div className="text-sm text-gray-500">Welcome, {userName}</div>
           </motion.div>
         </header>
 
         {/* Hero Section */}
-        <main className="flex-1 flex items-center justify-center px-6 py-12">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <main className="flex-1 flex items-center justify-center px-6 py-4">
+          <div className="max-w-[78rem] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ">
             {/* Left Content */}
             <div className="space-y-6">
               <motion.div
@@ -621,15 +624,16 @@ export default function WelcomePage() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7 }}
               >
-                <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
-                  Welcome to Your
-                  <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent block">
-                    Success Journey
+                <h2 className="text-[14px] lg:text-[36px] font-semibold text-gray-700 leading-12">
+                Welcome to 
+                  <span className="text-[40px] bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-bold block">
+                  Stay Fine Supermart 
+              
                   </span>
+                  Retails Chain Promoters & Partners Program
                 </h2>
-                <p className="text-[16px] text-gray-600 mt-2">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                <p className="text-[15.5px] text-gray-600 mt-3">
+                We are providing our Stay Fine branded healthcare, cosmetic, personal care, home care, and grocery products all over India through Stayfine Supermart. We offer the best opportunity to earn profit share on every product purchase.
                 </p>
               </motion.div>
 
@@ -658,25 +662,26 @@ export default function WelcomePage() {
 
               {/* Feature Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <FeatureCard
-                  icon={Shield}
-                  title="Secure"
-                  description="Your data is protected with enterprise-grade security"
-                  delay={0.4}
-                />
-                <FeatureCard
-                  icon={Zap}
-                  title="Fast"
-                  description="Lightning-fast performance for optimal user experience"
-                  delay={0.5}
-                />
-                <FeatureCard
-                  icon={Star}
-                  title="Premium"
-                  description="Access to premium features and priority support"
-                  delay={0.6}
-                />
-              </div>
+  <FeatureCard
+    icon={Shield}
+    title="Product Quality"
+    description="We deliver excellence with strict quality standards"
+    delay={0.4}
+  />
+  <FeatureCard
+    icon={Zap}
+    title="Customer Support"
+    description="Always here to help with responsive assistance"
+    delay={0.5}
+  />
+  <FeatureCard
+    icon={Star}
+    title="Speed Service"
+    description="Fast and reliable service when you need it most"
+    delay={0.6}
+  />
+</div>
+
             </div>
 
             {/* Right Content - Profile Card */}
@@ -732,11 +737,11 @@ export default function WelcomePage() {
               <p className="text-gray-500 text-sm">
                 Need assistance? Contact our support team at{" "}
                 <span className="text-blue-500 font-medium">
-                  support@proplatform.com
+                  support@stayfine.com
                 </span>
               </p>
               <div className="flex items-center justify-center gap-4 text-xs text-gray-400">
-                <span>© 2025 ProPlatform. All rights reserved.</span>
+                <span>© 2025 Stay Fine. All rights reserved.</span>
               </div>
             </div>
           </motion.div>
@@ -745,3 +750,5 @@ export default function WelcomePage() {
     </div>
   );
 }
+
+export default WelcomePage;

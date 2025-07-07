@@ -14,6 +14,8 @@ const AccountPage = () => {
   const [activeTab, setActiveTab] = useState("profile");
   const [successMessage, setSuccessMessage] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isIfscLoading, setIsIfscLoading] = useState(false);
+  const [ifscError, setIfscError] = useState("");
 
   // Form states for each tab
   const [profileData, setProfileData] = useState({
@@ -57,6 +59,7 @@ const AccountPage = () => {
     branchName: "",
     ifscCode: "",
     upiId: "",
+    panCardNumber: "",
   });
 
   const [nomineeData, setNomineeData] = useState({
@@ -74,6 +77,50 @@ const AccountPage = () => {
 
   const dispatch = useDispatch();
   const { user, isLoading } = useSelector((state) => state.auth);
+
+  // Function to fetch bank details from IFSC code
+  const fetchBankDetails = async (ifscCode) => {
+    if (ifscCode && ifscCode.length === 11) {
+      setIsIfscLoading(true);
+      setIfscError("");
+
+      try {
+        const response = await fetch(`https://ifsc.razorpay.com/${ifscCode}`);
+        if (response.ok) {
+          const data = await response.json();
+          setKycData((prev) => ({
+            ...prev,
+            bankName: data.BANK,
+            branchName: data.BRANCH,
+          }));
+          setIfscError("");
+        } else {
+          // IFSC not found - allow manual entry
+          setKycData((prev) => ({
+            ...prev,
+            bankName: "",
+            branchName: "",
+          }));
+          setIfscError(
+            "IFSC code not found. Please enter bank details manually."
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching bank details:", error);
+        setKycData((prev) => ({
+          ...prev,
+          bankName: "",
+          branchName: "",
+        }));
+        setIfscError("Unable to fetch bank details. Please enter manually.");
+      } finally {
+        setIsIfscLoading(false);
+      }
+    } else {
+      // Clear error when IFSC is incomplete
+      setIfscError("");
+    }
+  };
 
   // Load existing user data on component mount
   useEffect(() => {
@@ -165,6 +212,30 @@ const AccountPage = () => {
       ...prev,
       [name]: value,
     }));
+
+    // Auto-fetch bank details when IFSC code is entered
+    if (name === "ifscCode") {
+      if (value.length === 11) {
+        fetchBankDetails(value.toUpperCase());
+      } else {
+        // Clear bank details if IFSC is incomplete
+        setKycData((prev) => ({
+          ...prev,
+          bankName: "",
+          branchName: "",
+        }));
+        setIfscError("");
+      }
+    }
+
+    // Clear error when both bank name and branch name are manually entered
+    if ((name === "bankName" || name === "branchName") && ifscError) {
+      // Check if both fields will have values after this update
+      const updatedKycData = { ...kycData, [name]: value };
+      if (updatedKycData.bankName && updatedKycData.branchName) {
+        setIfscError("");
+      }
+    }
   };
 
   const handleNomineeChange = (e) => {
@@ -473,7 +544,7 @@ const AccountPage = () => {
         </div>
 
         {/* Upline Name */}
-        <div>
+        <div className="hidden">
           <label className="block text-[13px] font-medium text-gray-700 mb-1">
             Upline Name
           </label>
@@ -706,6 +777,7 @@ const AccountPage = () => {
               value={kycData.bankAccountNumber}
               onChange={handleKycChange}
               className="w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Enter account number"
               required
             />
           </div>
@@ -721,6 +793,7 @@ const AccountPage = () => {
               value={kycData.confirmAccountNumber}
               onChange={handleKycChange}
               className="w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Confirm account number"
             />
           </div>
 
@@ -735,40 +808,63 @@ const AccountPage = () => {
               value={kycData.accountHolderName}
               onChange={handleKycChange}
               className="w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Enter account holder name"
             />
           </div>
 
           {/* Bank Name */}
           <div>
             <label className="block text-[13px] font-medium text-gray-700 mb-1">
-              Bank Name
+              Bank Name{" "}
+              {(!kycData.bankName || ifscError) && (
+                <span className="text-red-500">*</span>
+              )}
             </label>
-            <select
+            <input
+              type="text"
               name="bankName"
               value={kycData.bankName}
               onChange={handleKycChange}
-              className="w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="">Select Bank</option>
-              <option value="SBI">State Bank of India</option>
-              <option value="HDFC">HDFC Bank</option>
-              <option value="ICICI">ICICI Bank</option>
-              <option value="Axis">Axis Bank</option>
-              <option value="PNB">Punjab National Bank</option>
-            </select>
+              className={`w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                kycData.bankName && !ifscError
+                  ? "bg-green-50"
+                  : ifscError
+                  ? "bg-white"
+                  : "bg-gray-100"
+              }`}
+              placeholder={
+                ifscError ? "Enter bank name manually" : "Auto-filled from IFSC"
+              }
+              disabled={isIfscLoading}
+            />
           </div>
 
           {/* Branch Name */}
           <div>
             <label className="block text-[13px] font-medium text-gray-700 mb-1">
-              Branch Name (Optional)
+              Branch Name{" "}
+              {(!kycData.branchName || ifscError) && (
+                <span className="text-red-500">*</span>
+              )}
             </label>
             <input
               type="text"
               name="branchName"
               value={kycData.branchName}
               onChange={handleKycChange}
-              className="w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className={`w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                kycData.branchName && !ifscError
+                  ? "bg-green-50"
+                  : ifscError
+                  ? "bg-white"
+                  : "bg-gray-100"
+              }`}
+              placeholder={
+                ifscError
+                  ? "Enter branch name manually"
+                  : "Auto-filled from IFSC"
+              }
+              disabled={isIfscLoading}
             />
           </div>
 
@@ -777,13 +873,26 @@ const AccountPage = () => {
             <label className="block text-[13px] font-medium text-gray-700 mb-1">
               IFSC / SWIFT Code
             </label>
-            <input
-              type="text"
-              name="ifscCode"
-              value={kycData.ifscCode}
-              onChange={handleKycChange}
-              className="w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
+            <div className="relative">
+              <input
+                type="text"
+                name="ifscCode"
+                value={kycData.ifscCode}
+                onChange={handleKycChange}
+                placeholder="Enter IFSC Code (e.g., SBIN0000123)"
+                maxLength="11"
+                className="w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent uppercase"
+                style={{ textTransform: "uppercase" }}
+              />
+              {isIfscLoading && (
+                <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>
+                </div>
+              )}
+            </div>
+            {ifscError && (
+              <p className="text-red-500 text-[12px] mt-1">{ifscError}</p>
+            )}
           </div>
 
           {/* UPI ID */}
@@ -797,6 +906,27 @@ const AccountPage = () => {
               value={kycData.upiId}
               onChange={handleKycChange}
               className="w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Enter UPI Id"
+            />
+          </div>
+
+          {/* PAN Card Number */}
+          <div>
+            <label className="block text-[13px] font-medium text-gray-700 mb-1">
+              PAN Card Number <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              name="panCardNumber"
+              value={kycData.panCardNumber}
+              onChange={handleKycChange}
+              placeholder="enter pan number (e.g., BCDE1234F)"
+              maxLength="10"
+              className="w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent uppercase"
+              style={{ textTransform: "uppercase" }}
+              pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+              title="PAN format: 5 letters, 4 numbers, 1 letter (e.g., ABCDE1234F)"
+              required
             />
           </div>
         </div>
@@ -828,7 +958,8 @@ const AccountPage = () => {
             name="nomineeName"
             value={nomineeData.nomineeName}
             onChange={handleNomineeChange}
-            className="w-full px-2 py-1.5 text-[14px] sm:py-1.5 text-[14px] text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-2 py-1.5 text-[14px] sm:py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Enter nominee name"
             required
           />
         </div>
@@ -879,6 +1010,7 @@ const AccountPage = () => {
             value={nomineeData.mobileNumber}
             onChange={handleNomineeChange}
             className="w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Enter mobile number"
           />
         </div>
 
@@ -893,6 +1025,7 @@ const AccountPage = () => {
             value={nomineeData.email}
             onChange={handleNomineeChange}
             className="w-full px-2 py-1.5 text-[14px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Enter email id"
           />
         </div>
 
@@ -1028,7 +1161,7 @@ const AccountPage = () => {
                     onClick={() => setActiveTab("profile")}
                     className={`flex-1 py-2 px-2 sm:px-4 text-[12px] sm:text-[14px] font-medium rounded-2xl transition-all duration-200 flex items-center justify-center gap-1 md:gap-3 cursor-pointer ${
                       activeTab === "profile"
-                        ? "bg-blue-500 text-white shadow-md transform "
+                        ? "bg-blue-500 text-white shadow-md transform"
                         : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
                     }`}
                   >

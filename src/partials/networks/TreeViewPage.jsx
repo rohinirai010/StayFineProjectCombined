@@ -366,7 +366,7 @@ const TreeNode = ({ node, level = 0, isLast = false, parentLines = [] }) => {
         </div>
                       <div className="flex justify-between items-center px-2 py-1 bg-purple-50 rounded-lg">
                         <span className="text-gray-700 font-medium">
-                          Personal Unit
+                          Self Unit
                         </span>
                         <span className="font-bold text-purple-600">
                           {node.personalUnit}
@@ -374,7 +374,7 @@ const TreeNode = ({ node, level = 0, isLast = false, parentLines = [] }) => {
                       </div>
                       <div className="flex justify-between items-center px-2 py-1 bg-blue-50 rounded-lg">
                         <span className="text-gray-700 font-medium">
-                          Group Unit
+                          Total Group Unit
                         </span>
                         <span className="font-bold text-blue-600">
                           {node.groupUnit}
@@ -382,13 +382,13 @@ const TreeNode = ({ node, level = 0, isLast = false, parentLines = [] }) => {
                       </div>
                       <div className="grid grid-cols-2 gap-2">
                         <div className="flex justify-between items-center px-2 py-1 bg-gray-100 rounded-lg">
-                          <span className="text-gray-600">Left</span>
+                          <span className="text-gray-600">Left U</span>
                           <span className="font-bold text-gray-800">
                             {node.left}
                           </span>
                         </div>
                         <div className="flex justify-between items-center px-2 py-1 bg-gray-100 rounded-lg">
-                          <span className="text-gray-600">Right</span>
+                          <span className="text-gray-600">Right U</span>
                           <span className="font-bold text-gray-800">
                             {node.right}
                           </span>
@@ -396,7 +396,7 @@ const TreeNode = ({ node, level = 0, isLast = false, parentLines = [] }) => {
                       </div>
                       <div className="flex justify-between items-center px-2 py-1 bg-green-50 rounded-lg">
                         <span className="text-gray-700 font-medium">
-                          Total Left Carry
+                        Total Left CF Unit
                         </span>
                         <span className="font-bold text-green-600">
                           {node.totalLeftCarry}
@@ -404,7 +404,7 @@ const TreeNode = ({ node, level = 0, isLast = false, parentLines = [] }) => {
                       </div>
                       <div className="flex justify-between items-center px-2 py-1 bg-orange-50 rounded-lg">
                         <span className="text-gray-700 font-medium">
-                          Total Right Carry
+                        Total Right CF Unit
                         </span>
                         <span className="font-bold text-orange-600">
                           {node.totalRightCarry}

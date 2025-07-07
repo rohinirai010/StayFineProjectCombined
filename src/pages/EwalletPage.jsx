@@ -1114,7 +1114,7 @@ export const EWalletPage = () => {
     {
       id: 1,
       date: "24 Oct 2024 05:27:59",
-      description: "Binary Commission From JANQU11",
+      description: "Matching Business Incentive on 10 Units",
       totalAmount: 7.0,
       tds: 0.35,
       serviceCharge: 0.7,
@@ -1125,7 +1125,7 @@ export const EWalletPage = () => {
     {
       id: 2,
       date: "16 Sep 2024 13:47:08",
-      description: "Level Commission From SANTIAGO1985",
+      description: "Matching Business Incentive on 10 Units",
       totalAmount: 3.0,
       tds: 0.15,
       serviceCharge: 0.3,
@@ -1136,7 +1136,7 @@ export const EWalletPage = () => {
     {
       id: 3,
       date: "16 Sep 2024 13:47:08",
-      description: "Referral From SANTIAGO1985",
+      description: "Matching Business Incentive on 10 Units",
       totalAmount: 5.0,
       tds: 0.25,
       serviceCharge: 0.5,

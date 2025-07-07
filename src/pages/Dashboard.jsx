@@ -44,30 +44,63 @@ const Dashboard = () => {
     commission: 71.4,
     totalCredit: 96.4,
     totalDebit: 72.54,
+    totalTds: 23,
+    totalServiceCharge: 1.3,
+    kycStatus: "Approved", //  "Pending", "Approved", or "Rejected"
+    totalRewards: 10,
   };
 
   const stats = [
     {
-      label: "E-Wallet",
+      label: "Purchasing Unit",
       value: `₹${statsData.eWallet}`,
       color: "green",
       icon: Wallet,
     },
     {
-      label: "Commission",
+      label: "Incentive",
       value: `₹${statsData.commission}`,
       color: "blue",
       icon: IndianRupeeIcon,
     },
     {
-      label: "Total Credit",
+      label: "Total Earning",
       value: `₹${statsData.totalCredit}`,
       color: "purple",
       icon: Wallet,
     },
     {
-      label: "Total Debit",
+      label: "Total Paid Earning",
       value: `₹${statsData.totalDebit}`,
+      color: "teal",
+      icon: IndianRupeeIcon,
+    },
+    {
+      label: "Total T.D.S.",
+      value: `₹${statsData.totalTds}`,
+      color: "teal",
+      icon: IndianRupeeIcon,
+    },
+    {
+      label: "Total Service Charge",
+      value: `₹${statsData.totalServiceCharge}`,
+      color: "teal",
+      icon: IndianRupeeIcon,
+    },
+    {
+      label: "KYC Status",
+      value: statsData.kycStatus,
+      color:
+        statsData.kycStatus === "Approved"
+          ? "green"
+          : statsData.kycStatus === "Rejected"
+          ? "red"
+          : "yellow",
+      icon: IndianRupeeIcon,
+    },
+    {
+      label: "Rewards",
+      value: `₹${statsData.totalRewards}`,
       color: "teal",
       icon: IndianRupeeIcon,
     },
@@ -278,7 +311,7 @@ const Dashboard = () => {
             </div>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-2  lg:grid-cols-4 gap-2 md:gap-6 mb-3 md:mb-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 mb-3 md:mb-4">
               {stats.map((stat, index) => (
                 <div
                   key={index}
@@ -286,32 +319,40 @@ const Dashboard = () => {
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-[11px] font-medium text-gray-600 mb-1">
+                      <p className="text-[11px] sm:text-[11.5px] font-medium text-gray-600 mb-1">
                         {stat.label}
                       </p>
-                      <p className="text-[19px] font-bold text-gray-900">
+                      <p className="text-[15.5px] sm:text-[18.5px] font-bold text-gray-900">
                         {stat.value}
                       </p>
                     </div>
                     <div
-                      className={`p-2 rounded-lg ${
+                      className={`p-1 sm:p-2 rounded-lg ${
                         stat.color === "green"
                           ? "bg-green-100"
                           : stat.color === "blue"
                           ? "bg-blue-100"
                           : stat.color === "purple"
                           ? "bg-purple-100"
+                          : stat.color === "red"
+                          ? "bg-red-100"
+                          : stat.color === "yellow"
+                          ? "bg-yellow-100"
                           : "bg-teal-100"
                       }`}
                     >
                       <stat.icon
-                        className={`w-5 sm:w-6 h-5 sm:h-6 ${
+                        className={`w-4 sm:w-6 h-4 sm:h-6 ${
                           stat.color === "green"
                             ? "text-green-600"
                             : stat.color === "blue"
                             ? "text-blue-600"
                             : stat.color === "purple"
                             ? "text-purple-600"
+                            : stat.color === "red"
+                            ? "text-red-600"
+                            : stat.color === "yellow"
+                            ? "text-yellow-600"
                             : "text-teal-600"
                         }`}
                       />
@@ -774,95 +815,97 @@ const Dashboard = () => {
 
             {/* Team Overview */}
             <div className="pt-2 pb-4 border-b">
-        <h3 className="text-[14px] font-semibold mb-2">TEAM OVERVIEW</h3>
+              <h3 className="text-[14px] font-semibold mb-2">TEAM OVERVIEW</h3>
 
-        {/* Header Row */}
-        <div className="grid grid-cols-2 gap-4 pb-2 border-b border-gray-200">
-          <div className="text-left">
-            <span className="text-[11px] lg:text-[10px] xl:text-[11px] text-gray-500 font-semibold uppercase tracking-wider">
-              Particular
-            </span>
-          </div>
-          <div className="flex flex-row items-end justify-end gap-8 lg:gap-3 xl:gap-8">
+              {/* Header Row */}
+              <div className="grid grid-cols-2 gap-4 pb-2 border-b border-gray-200">
+                <div className="text-left">
+                  <span className="text-[11px] lg:text-[10px] xl:text-[11px] text-gray-500 font-semibold uppercase tracking-wider">
+                    Particular
+                  </span>
+                </div>
+                <div className="flex flex-row items-end justify-end gap-8 lg:gap-3 xl:gap-6">
+                  <div className="text-center">
+                    <span className="text-[11px] lg:text-[10px] xl:text-[11px] text-blue-600 font-semibold uppercase tracking-wider">
+                      Left
+                    </span>
+                  </div>
+                  <div className="text-center">
+                    <span className="text-[11px] lg:text-[10px] xl:text-[11px] text-green-600 font-semibold uppercase tracking-wider">
+                      Right
+                    </span>
+                  </div>
+                </div>
+              </div>
 
-          <div className="text-center">
-            <span className="text-[11px] lg:text-[10px] xl:text-[11px] text-blue-600 font-semibold uppercase tracking-wider">
-              Left
-            </span>
-          </div>
-          <div className="text-center">
-            <span className="text-[11px] lg:text-[10px] xl:text-[11px] text-green-600 font-semibold uppercase tracking-wider">
-              Right
-            </span>
-          </div>
-          </div>
-        </div>
+              {/* Data Rows */}
+              <div className="space-y-0">
+                {/* Current Row */}
+                <div className="grid grid-cols-2 gap-4 py-1.5 xl:py-2 hover:bg-gray-50 transition-colors duration-150">
+                  <div className="text-left">
+                    <span className="text-[13px] lg:text-[11.5px] xl:text-[13px] text-gray-700 font-medium">
+                      Today Business U
+                    </span>
+                  </div>
 
-        {/* Data Rows */}
-        <div className="space-y-0">
-          {/* Current Row */}
-          <div className="grid grid-cols-2 gap-4 py-1.5 xl:py-2 hover:bg-gray-50 transition-colors duration-150">
-            <div className="text-left">
-              <span className="text-[13px] lg:text-[11.5px] xl:text-[13px] text-gray-700 font-medium">Current</span>
-            </div>
+                  <div className="flex flex-row items-end justify-end gap-8 lg:gap-3 xl:gap-6">
+                    <div className="text-center">
+                      <span className="text-[13px] lg:text-[12px] xl:text-[13px] font-bold text-blue-600 bg-blue-50 px-3 lg:px-2 xl:px-3 py-1 rounded-md">
+                        {teamOverviewData.current.left}
+                      </span>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-[13px] lg:text-[12px] xl:text-[13px] font-bold text-green-600 bg-green-50 px-3 lg:px-2 xl:px-3 py-1 rounded-md">
+                        {teamOverviewData.current.right}
+                      </span>
+                    </div>
+                  </div>
+                </div>
 
-            <div className="flex flex-row items-end justify-end gap-8 lg:gap-3 xl:gap-8">
+                {/* Carry Forward Row */}
+                <div className="grid grid-cols-2 gap-4 py-1.5 xl:py-2 hover:bg-gray-50 transition-colors duration-150 border-t border-gray-100">
+                  <div className="text-left">
+                    <span className="text-[13px] lg:text-[11px] xl:text-[13px] text-gray-700 font-medium">
+                      Business C.F. U
+                    </span>
+                  </div>
 
-            <div className="text-center">
-              <span className="text-[13px] lg:text-[12px] xl:text-[13px] font-bold text-blue-600 bg-blue-50 px-3 lg:px-2 xl:px-3 py-1 rounded-md">
-                {teamOverviewData.current.left}
-              </span>
-            </div>
-            <div className="text-center">
-              <span className="text-[13px] lg:text-[12px] xl:text-[13px] font-bold text-green-600 bg-green-50 px-3 lg:px-2 xl:px-3 py-1 rounded-md">
-                {teamOverviewData.current.right}
-              </span>
-            </div>
-            </div>
-          </div>
+                  <div className="flex flex-row items-end justify-end gap-8 lg:gap-3 xl:gap-6">
+                    <div className="text-center">
+                      <span className="text-[13px] lg:text-[12px] xl:text-[13px] font-bold text-blue-600 bg-blue-50 px-3 lg:px-2 xl:px-3 py-1 rounded-md">
+                        {teamOverviewData.carryForward.left}
+                      </span>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-[13px] lg:text-[12px] xl:text-[13px] font-bold text-green-600 bg-green-50 px-3 lg:px-2 xl:px-3 py-1 rounded-md">
+                        {teamOverviewData.carryForward.right}
+                      </span>
+                    </div>
+                  </div>
+                </div>
 
-          {/* Carry Forward Row */}
-          <div className="grid grid-cols-2 gap-4 py-1.5 xl:py-2 hover:bg-gray-50 transition-colors duration-150 border-t border-gray-100">
-            <div className="text-left">
-              <span className="text-[13px] lg:text-[11px] xl:text-[13px] text-gray-700 font-medium">Carry Forward</span>
+                {/* Paid Row */}
+                <div className="grid grid-cols-2 gap-4 py-1.5 xl:py-2 hover:bg-gray-50 transition-colors duration-150 border-t border-gray-100">
+                  <div className="text-left">
+                    <span className="text-[13px] lg:text-[11.5px] xl:text-[13px] text-gray-700 font-medium">
+                      Matching Business U
+                    </span>
+                  </div>
+                  <div className="flex flex-row items-end justify-end gap-8 lg:gap-3 xl:gap-5">
+                    <div className="text-center">
+                      <span className="text-[13px] lg:text-[12px] xl:text-[13px] font-bold text-blue-600 bg-blue-50 px-3 lg:px-2 xl:px-3 py-1 rounded-md">
+                        {teamOverviewData.paid.left}
+                      </span>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-[13px] lg:text-[12px] xl:text-[13px] font-bold text-green-600 bg-green-50 px-3 lg:px-2 xl:px-3 py-1 rounded-md">
+                        {teamOverviewData.paid.right}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <div className="flex flex-row items-end justify-end gap-8 lg:gap-3 xl:gap-8">
-
-            <div className="text-center">
-              <span className="text-[13px] lg:text-[12px] xl:text-[13px] font-bold text-blue-600 bg-blue-50 px-3 lg:px-2 xl:px-3 py-1 rounded-md">
-                {teamOverviewData.carryForward.left}
-              </span>
-            </div>
-            <div className="text-center">
-              <span className="text-[13px] lg:text-[12px] xl:text-[13px] font-bold text-green-600 bg-green-50 px-3 lg:px-2 xl:px-3 py-1 rounded-md">
-                {teamOverviewData.carryForward.right}
-              </span>
-            </div>
-            </div>
-          </div>
-
-          {/* Paid Row */}
-          <div className="grid grid-cols-2 gap-4 py-1.5 xl:py-2 hover:bg-gray-50 transition-colors duration-150 border-t border-gray-100">
-            <div className="text-left">
-              <span className="text-[13px] lg:text-[11.5px] xl:text-[13px] text-gray-700 font-medium">Paid</span>
-            </div>
-            <div className="flex flex-row items-end justify-end gap-8 lg:gap-3 xl:gap-6.5">
-
-            <div className="text-center">
-              <span className="text-[13px] lg:text-[12px] xl:text-[13px] font-bold text-blue-600 bg-blue-50 px-3 lg:px-2 xl:px-3 py-1 rounded-md">
-                {teamOverviewData.paid.left}
-              </span>
-            </div>
-            <div className="text-center">
-              <span className="text-[13px] lg:text-[12px] xl:text-[13px] font-bold text-green-600 bg-green-50 px-3 lg:px-2 xl:px-3 py-1 rounded-md">
-                {teamOverviewData.paid.right}
-              </span>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
             {/* Payout Overview */}
             <div className="pt-3">
