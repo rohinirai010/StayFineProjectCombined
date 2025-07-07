@@ -496,7 +496,7 @@ export const SponsorTree = () => {
 
   // Enhanced sample sponsor tree data with complete info
   const [treeData, setTreeData] = useState({
-    id: "INF00123",
+    id: "SF00123",
     name: "Root User",
     count: 16,
     personalUnit: 150,
@@ -511,7 +511,7 @@ export const SponsorTree = () => {
     totalChildrenCount: 6,
     children: [
       {
-        id: "INF75481323",
+        id: "SF75481323",
         name: "John Smith",
         count: 1,
         personalUnit: 120,
@@ -525,7 +525,7 @@ export const SponsorTree = () => {
         active: true, 
         children: [
           {
-            id: "INF3874705",
+            id: "SF3874705",
             name: "Alice Johnson",
             count: 0,
             personalUnit: 90,
@@ -542,7 +542,7 @@ export const SponsorTree = () => {
         ],
       },
       {
-        id: "INF18536507",
+        id: "SF18536507",
         name: "Sarah Davis",
         count: 5,
         personalUnit: 110,
@@ -555,7 +555,7 @@ export const SponsorTree = () => {
         collapsed: false,
         children: [
           {
-            id: "INF9165071",
+            id: "SF9165071",
             name: "Mike Brown",
             count: 3,
             personalUnit: 95,
@@ -569,7 +569,7 @@ export const SponsorTree = () => {
             active: false, 
             children: [
               {
-                id: "INF47794583",
+                id: "SF47794583",
                 name: "Emma White",
                 count: 0,
                 personalUnit: 80,
@@ -584,7 +584,7 @@ export const SponsorTree = () => {
                 children: [],
               },
               {
-                id: "INF47794588",
+                id: "SF47794588",
                 name: "Tom Green",
                 count: 0,
                 personalUnit: 85,
@@ -601,7 +601,7 @@ export const SponsorTree = () => {
             ],
           },
           {
-            id: "INF477945072",
+            id: "SF477945072",
             name: "Lisa Brown",
             count: 2,
             personalUnit: 75,
@@ -618,7 +618,7 @@ export const SponsorTree = () => {
         ],
       },
       {
-        id: "INF42341484",
+        id: "SF42341484",
         name: "Kevin Wilson",
         count: 5,
         personalUnit: 100,
@@ -632,7 +632,7 @@ export const SponsorTree = () => {
         active: false, 
         children: [
           {
-            id: "INF52392885",
+            id: "SF52392885",
             name: "Jennifer Lee",
             count: 1,
             personalUnit: 90,
@@ -646,7 +646,7 @@ export const SponsorTree = () => {
             active: true, 
             children: [
               {
-                id: "INF52392742",
+                id: "SF52392742",
                 name: "David Kim",
                 count: 0,
                 personalUnit: 70,
@@ -663,7 +663,7 @@ export const SponsorTree = () => {
             ],
           },
           {
-            id: "INF52392886",
+            id: "SF52392886",
             name: "Mark Taylor",
             count: 2,
             personalUnit: 95,
@@ -677,7 +677,7 @@ export const SponsorTree = () => {
             active: false, 
             children: [
               {
-                id: "INF52392743",
+                id: "SF52392743",
                 name: "Anna Davis",
                 count: 0,
                 personalUnit: 85,
@@ -694,7 +694,7 @@ export const SponsorTree = () => {
             ],
           },
           {
-            id: "INF52392887",
+            id: "SF52392887",
             name: "Rachel White",
             count: 1,
             personalUnit: 88,
@@ -711,7 +711,7 @@ export const SponsorTree = () => {
         ],
       },
       {
-        id: "INF99999001",
+        id: "SF99999001",
         name: "Michael Johnson",
         count: 2,
         personalUnit: 85,
@@ -726,7 +726,7 @@ export const SponsorTree = () => {
         children: [],
       },
       {
-        id: "INF99999002",
+        id: "SF99999002",
         name: "Patricia Miller",
         count: 1,
         personalUnit: 95,
@@ -741,7 +741,7 @@ export const SponsorTree = () => {
         children: [],
       },
       {
-        id: "INF99999003",
+        id: "SF99999003",
         name: "Robert Anderson",
         count: 0,
         personalUnit: 75,

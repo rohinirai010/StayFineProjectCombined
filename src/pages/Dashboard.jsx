@@ -110,28 +110,28 @@ const Dashboard = () => {
   const maxValue = Math.max(...currentJoiningsData.map((item) => item.value));
 
   const newMembers = [
-    { name: "Byron", id: "INF0361985", date: "16 Sep 2024", avatar: "B" },
+    { name: "Byron", id: "SF0361985", date: "16 Sep 2024", avatar: "B" },
     {
       name: "Sean Skinner",
-      id: "INF9076273",
+      id: "SF9076273",
       date: "18 Mar 2023",
       avatar: "S",
     },
     {
       name: "David Andrade",
-      id: "INF18536507",
+      id: "SF18536507",
       date: "15 Mar 2023",
       avatar: "D",
     },
     {
       name: "Barbara Duran",
-      id: "INF74837484",
+      id: "SF74837484",
       date: "13 Mar 2023",
       avatar: "B",
     },
     {
       name: "Michael Davis",
-      id: "INF42341484",
+      id: "SF42341484",
       date: "03 Jan 2023",
       avatar: "M",
     },
@@ -142,46 +142,46 @@ const Dashboard = () => {
     "Top Earners": [
       {
         name: "Michael Davis",
-        id: "INF42341484",
+        id: "SF42341484",
         value: "₹25.50",
         avatar: "M",
       },
       {
         name: "David Andrade",
-        id: "INF18536507",
+        id: "SF18536507",
         value: "₹12.75",
         avatar: "D",
       },
       {
         name: "Corrie Washington",
-        id: "INF91850711",
+        id: "SF91850711",
         value: "₹8.50",
         avatar: "C",
       },
-      { name: "Jeremy Lee", id: "INF55329858", value: "₹6.80", avatar: "J" },
+      { name: "Jeremy Lee", id: "SF55329858", value: "₹6.80", avatar: "J" },
     ],
     "Top Recruiters": [
       {
         name: "Sarah Johnson",
-        id: "INF12345678",
+        id: "SF12345678",
         value: "15 recruits",
         avatar: "S",
       },
       {
         name: "Robert Brown",
-        id: "INF87654321",
+        id: "SF87654321",
         value: "12 recruits",
         avatar: "R",
       },
       {
         name: "Emily Wilson",
-        id: "INF11223344",
+        id: "SF11223344",
         value: "10 recruits",
         avatar: "E",
       },
       {
         name: "James Taylor",
-        id: "INF44332211",
+        id: "SF44332211",
         value: "8 recruits",
         avatar: "J",
       },

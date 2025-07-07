@@ -625,7 +625,7 @@ export const GenealogyTree = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   const [treeData, setTreeData] = useState({
-    id: "INF00123",
+    id: "SF00123",
     name: "Brent Hall",
     left: 9,
     right: 14,
@@ -638,7 +638,7 @@ export const GenealogyTree = () => {
     childrenCount: 2,
     children: [
       {
-        id: "INF75681323",
+        id: "SF75681323",
         name: "John Smith",
         left: 7,
         right: 1,
@@ -679,7 +679,7 @@ export const GenealogyTree = () => {
             ],
           },
           {
-            id: "INF3874705",
+            id: "SF3874705",
             name: "Mike Johnson",
             left: 0,
             right: 0,
@@ -694,7 +694,7 @@ export const GenealogyTree = () => {
         ],
       },
       {
-        id: "INF18536507",
+        id: "SF18536507",
         name: "Sarah Davis",
         left: 4,
         right: 9,
@@ -707,7 +707,7 @@ export const GenealogyTree = () => {
         childrenCount: 4,
         children: [
           {
-            id: "INF9165071",
+            id: "SF9165071",
             name: "Alex Brown",
             left: 3,
             right: 0,
@@ -719,7 +719,7 @@ export const GenealogyTree = () => {
             collapsed: false,
             children: [
               {
-                id: "INF98459470",
+                id: "SF98459470",
                 name: "Emma White",
                 left: 2,
                 right: 0,
@@ -735,7 +735,7 @@ export const GenealogyTree = () => {
             ],
           },
           {
-            id: "INF42341484",
+            id: "SF42341484",
             name: "David Wilson",
             left: 3,
             right: 5,
@@ -747,7 +747,7 @@ export const GenealogyTree = () => {
             collapsed: false,
             children: [
               {
-                id: "INF55326858",
+                id: "SF55326858",
                 name: "Lisa Garcia",
                 left: 1,
                 right: 1,
@@ -760,7 +760,7 @@ export const GenealogyTree = () => {
                 children: [null, null],
               },
               {
-                id: "INF52392884",
+                id: "SF52392884",
                 name: "Tom Martinez",
                 left: 0,
                 right: 4,

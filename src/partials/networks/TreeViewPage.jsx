@@ -4,7 +4,7 @@ import { User, Plus, Minus, Info, ChevronRight } from "lucide-react";
 // Sample tree data structure - Array of root nodes to support multiple parents
 const sampleTreeData = [
   {
-    id: "INF8536507",
+    id: "SF8536507",
     name: "David Andrade",
     level: 1,
     personalUnit: 150,
@@ -16,7 +16,7 @@ const sampleTreeData = [
     active: true, 
     children: [
       {
-        id: "INF4234484",
+        id: "SF4234484",
         name: "Michael Davis",
         level: 2,
         personalUnit: 120,
@@ -28,7 +28,7 @@ const sampleTreeData = [
         active: true, 
         children: [
           {
-            id: "INF52392884",
+            id: "SF52392884",
             name: "Brent Hall",
             level: 3,
             personalUnit: 90,
@@ -40,7 +40,7 @@ const sampleTreeData = [
             active: false, 
             children: [
               {
-                id: "INF40589561",
+                id: "SF40589561",
                 name: "Randall Greene",
                 level: 4,
                 personalUnit: 85,
@@ -52,7 +52,7 @@ const sampleTreeData = [
                 active: true, 
                 children: [
                   {
-                    id: "INF90762773",
+                    id: "SF90762773",
                     name: "Sean Skinner",
                     level: 5,
                     personalUnit: 75,
@@ -64,7 +64,7 @@ const sampleTreeData = [
                     active: false, 
                     children: [
                       {
-                        id: "INF47794581",
+                        id: "SF47794581",
                         name: "Jose Turner",
                         level: 6,
                         personalUnit: 70,
@@ -97,7 +97,7 @@ const sampleTreeData = [
             ],
           },
           {
-            id: "INF55326858",
+            id: "SF55326858",
             name: "Jeremy Lee",
             level: 3,
             personalUnit: 95,
@@ -109,7 +109,7 @@ const sampleTreeData = [
             active: false, 
             children: [
               {
-                id: "INF13950839",
+                id: "SF13950839",
                 name: "Robert Grimes",
                 level: 4,
                 personalUnit: 80,
@@ -139,7 +139,7 @@ const sampleTreeData = [
         ],
       },
       {
-        id: "INF91650711",
+        id: "SF91650711",
         name: "Carrie Washington",
         level: 2,
         personalUnit: 110,
@@ -152,7 +152,7 @@ const sampleTreeData = [
         children: [],
       },
       {
-        id: "INF75481323",
+        id: "SF75481323",
         name: "Barbara Duran",
         level: 2,
         personalUnit: 100,
@@ -167,7 +167,7 @@ const sampleTreeData = [
     ],
   },
   {
-    id: "INF75481323",
+    id: "SF75481323",
     name: "Barbara Duran",
     level: 1,
     personalUnit: 100,
@@ -179,7 +179,7 @@ const sampleTreeData = [
     active: false, 
     children: [
       {
-        id: "INF22334455",
+        id: "SF22334455",
         name: "Sarah Johnson",
         level: 2,
         personalUnit: 130,
@@ -191,7 +191,7 @@ const sampleTreeData = [
         active: true, 
         children: [
           {
-            id: "INF33445566",
+            id: "SF33445566",
             name: "Mark Wilson",
             level: 3,
             personalUnit: 110,
